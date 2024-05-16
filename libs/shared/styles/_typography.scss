@@ -1,0 +1,51 @@
+$font-family: 'Inter', sans-serif;
+
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semi: 600;
+$fw-bold: 700;
+
+$typography: (
+  body-2: (
+    font-size: 12px,
+    line-height: 18px,
+  ),
+  body-1: (
+    font-size: 14px,
+    line-height: 20px,
+  ),
+  h6: (
+    font-size: 16px,
+    line-height: 24px,
+  ),
+  h5: (
+    font-size: 18px,
+    line-height: 28px,
+  ),
+  h4: (
+    font-size: 20px,
+    line-height: 30px,
+  ),
+  h3: (
+    font-size: 24px,
+    line-height: 32px,
+  ),
+  h2: (
+    font-size: 30px,
+    line-height: 38px,
+  ),
+  h1: (
+    font-size: 36px,
+    line-height: 44px,
+  ),
+);
+
+@function typography($tag, $property) {
+  @return map-get(map-get($typography, $tag), $property);
+}
+
+@mixin apply-typography($tag) {
+  font-size: typography($tag, 'font-size');
+  line-height: typography($tag, 'line-height');
+}
+

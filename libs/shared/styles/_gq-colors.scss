@@ -1,0 +1,82 @@
+$colors: (
+  bg: (
+    100: #515257, // accent
+    200: #404146, // focused
+    300: #2D2E33, // modal bg, fields disabled, skeleton foreground
+    400: #222222, // secondary, skeleton bg
+    500: #1D1D1F, // primary
+    600: #111111, // fields bg,
+  ),
+  error: (
+    100: #fee4e2,
+    200: #fecdca,
+    300: #fda29b,
+    400: #f97066,
+    500: #f04438,
+    600: #d92d20,
+    700: #b42318,
+    800: #912018,
+    900: #7a271a,
+  ),
+  warning: (
+    100: #fef0c7,
+    200: #fedf89,
+    300: #fec84b,
+    400: #fdb022,
+    500: #f79009,
+    600: #dc6803,
+    700: #b54708,
+    800: #93370d,
+    900: #7a2e0e,
+  ),
+  success: (
+    100: #d1fadf,
+    200: #a6f4c5,
+    300: #6ce9a6,
+    400: #32d583,
+    500: #12b76a,
+    600: #039855,
+    700: #027a48,
+    800: #05603a,
+    900: #054f31,
+  ),
+  grey: (
+    100: #f2f4f7,
+    200: #eaecf0,
+    300: #d0d5dd,
+    400: #98a2b3,
+    500: #667085,
+    600: #475467,
+    700: #344054,
+    800: #1d2939,
+    900: #101828,
+  ),
+  brand: (
+    100: #F2FBF5,
+    200: #E5F7EB,
+    300: #CAEED6,
+    400: #95DDAD,
+    500: #2ABB5A,
+    600: #28B055,
+    700: #25A44F,
+    800: #208D44,
+    900: #155E2D,
+  ),
+  system: (
+    white: #fffff,
+    black: #000000,
+  ),
+);
+
+@function get-color($color, $shade: 500, $map : $colors ){
+  @if (map-has-key($map, $color)) {
+    $value: map-get($map, $color);
+    @if type-of($value) == color {
+      @return $value;
+    }
+    @if (map-has-key($value, $shade)) {
+      @return map-get($value, $shade);
+    }
+  }
+  @return null;
+}

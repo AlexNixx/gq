@@ -3,6 +3,8 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { TanStackRouterVite } from '@tanstack/router-vite-plugin';
+import path from 'path';
+import appRoot from 'app-root-path';
 
 export default defineConfig({
   root: __dirname,
@@ -24,6 +26,20 @@ export default defineConfig({
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
+
+  resolve: {
+    alias: [
+      {
+        find: /^@gq\/styles\//, //for correct working alias in scss modules
+        replacement: `${path.resolve(
+          appRoot.path,
+          'libs',
+          'shared',
+          'styles'
+        )}/`,
+      },
+    ],
+  },
 
   build: {
     outDir: '../../dist/apps/gq',
